@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<!-- {
+  "events": [
+    {
+      "name": "Mumbai International Film Festival",
+      "dates": "March 2023",
+      "location": {
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "country": "India",
+        "latitude": null,
+        "longitude": null
+      },
+      "description": "A biennial film festival that showcases feature films, documentaries, and shorts from around the world.",
+      "registrationLink": null
+    },
+    {
+      "name": "India International Jewellery Show",
+      "dates": "7th to 11th April 2023",
+      "location": {
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "country": "India",
+        "latitude": "19.1577° N",
+        "longitude": "72.8679° E"
+      },
+      "description": "One of India's largest trade shows for the jewellery industry, featuring exhibitors from India and abroad.",
+      "registrationLink": "http://www.iijs.org/"
+    },
+    {
+      "name": "Mumbai Marathon",
+      "dates": "May 2023",
+      "location": {
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "country": "India",
+        "latitude": null,
+        "longitude": null
+      },
+      "description": "One of India's largest marathons, featuring runners from around the world competing in a variety of races.",
+      "registrationLink": null
+    },
+    {
+      "name": "India International Trade Fair",
+      "dates": "November 2023",
+      "location": {
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "country": "India",
+        "latitude": null,
+        "longitude": null
+      },
+      "description": "An annual trade show featuring exhibitors from various industries in India and abroad.",
+      "registrationLink": null
+    },
+    {
+      "name": "Mumbai Comic Con",
+      "dates": "December 2023",
+      "location": {
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "country": "India",
+        "latitude": null,
+        "longitude": null
+      },
+      "description": "A pop culture convention featuring comic books, gaming, cosplay, and more.",
+      "registrationLink": null
+    }
+  ]
+} -->
+
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <title>Events and Locations</title>
+    <style>
+        #container {
+            display: flex;
+        }
+
+        #left {
+            width: 50%;
+            padding: 20px;
+        }
+
+        #right {
+            width: 50%;
+            height: 400px;
+        }
+
+        #map {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Events and Locations</h1>
+    <div id="container">
+        <div id="left">
+            <h2>Mumbai International Film Festival</h2>
+            <ul>
+                <li>March 2023</li>
+                <li>Mumbai, Maharashtra, India</li>
+                <li>A biennial film festival that showcases feature films, documentaries, and shorts from around the
+                    world.</li>
+                <li><a href="http://www.mumbaifilmfestival.com/">http://www.mumbaifilmfestival.com/</a></li>
+            </ul>
+        </div>
+        <div id="right">
+            <h2>Event Location</h2>
+            <div id="map" style="height: 400px;"></div>
+            <script>
+                var map = L.map('map').setView([19.0596, 72.8295], 12);
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                    maxZoom: 18
+                }).addTo(map);
+
+                var myIcon = L.icon({
+                    iconUrl: 'marker.png',
+                    iconSize: [30, 40],
+                    iconAnchor: [22, 94],
+                    popupAnchor: [2, 50]
+                });
+
+                var marker = L.marker([19.0996475, 72.8871316], { icon: myIcon }).addTo(map);
+                var marker1 = L.marker([19.2307, 72.8567], { icon: myIcon }).addTo(map);
+                var marker2 = L.marker([19.0522, 72.9005], { icon: myIcon }).addTo(map);
+                let latitude = 19.0596;
+                let longitude = 72.8295;
+                marker.bindPopup("<b>ComicCon</b>").openPopup();
+                marker1.bindPopup("<b>International Flim Station</b>").openPopup();
+                marker2.bindPopup("<b>Jewellery Exibition</b>").openPopup();
+                // after closing the popup, it should redirect to the next page
+                marker.on('popupclose', function (e) {
+                    window.location.href = `http://www.google.com/maps/place/${latitude},${longitude}`;// put her the link of the chat button
+                });
+            </script>
+        </div>
+    </div>
+    <div id="container">
+        <div id="left">
+            <h2>India International Jewellery Show</h2>
+            <ul>
+                <li>7th to 11th April 2023</li>
+                <li>Mumbai, Maharashtra, India</li>
+                <li>One of India's largest trade shows for the jewellery industry, featuring exhibitors from India and
+                    abroad.</li>
+                <li><a href="http://www.iijs.org/">http://www.iijs.org/</a></li>
+            </ul>
+        </div>
+        <div id="right">
+            <h2>Event Location</h2>
+            <div id="map"></div>
+            <script>
+          // Add your code to display the location of the selected event on the map
+            </script>
+        </div>
+    </div>
+
+
+
+    <div id="container">
+        <div id="left">
+            <h2>Mumbai Marathon</h2>
+            <ul>
+                <li>May 2023</li>
+                <li>Mumbai, Maharashtra, India</li>
+                <li>One of India's largest marathons, featuring runners from around the world competing in a variety of
+                    races.</li>
+            </ul>
+        </div>
+        <div id="right">
+            <h2>Event Location</h2>
+            <div id="map"></div>
+            <script>
+          // Add your code to display the location of the selected event on the map
+            </script>
+        </div>
+    </div>
+
+    <div id="container">
+        <div id="left">
+            <h2>India International Trade Fair</h2>
+            <ul>
+                <li>November 2023</li>
+                <li>Mumbai, Maharashtra, India</li>
+                <li>An annual trade show featuring exhibitors from various industries in India and abroad.</li>
+            </ul>
+        </div>
+        <div id="right">
+            <h2>Event Location</h2>
+            <div id="map"></div>
+            <script>
+          // Add your code to display the location of the selected event on the map
+            </script>
+        </div>
+
+    </div>
+
+    <div id="container">
+        <div id="left">
+            <h2>Mumbai Comic Con</h2>
+            <ul>
+                <li>December 2023</li>
+                <li>Mumbai, Maharashtra, India</li>
+                <li>A pop culture convention featuring comic books, gaming, cosplay, and more.</li>
+                <li><a href="http://www.mumbaicomiccon.com/">http://www.mumbaicomiccon.com/</a></li>
+            </ul>
+        </div>
+        <div id="right">
+            <h2>Event Location</h2>
+            <div id="map"></div>
+            <script>
+          // Add your code to display the location of the selected event on the map
+            </script>
+        </div>
+
+</body>
+
+</html>
